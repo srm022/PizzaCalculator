@@ -1,28 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PizzaCalculator
 {
-    /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            FileHandler handler = new FileHandler();
+
+            handler.ReadMenu();
+
+            string[] items = handler.GetMenuItems();
+            decimal[] prices = handler.GetMenuPrices();
+
+            for(int i = 0; i < items.Length; i++)
+            {
+                Console.Write(items[i] + " ");
+                Console.Write(prices[i] + "\n");
+            }
         }
     }
 }
